@@ -37,8 +37,9 @@ jobs:
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ''
 
       - name: Show build output
-        run: find src-tauri/target/release -name "*.exe" -o -name "*.msi" 2>/dev/null | head -20
-        shell: bash
+        run: Get-ChildItem -Recurse src-tauri\target\release\bundle | Select-Object FullName
+        shell: pwsh
+        continue-on-error: true
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

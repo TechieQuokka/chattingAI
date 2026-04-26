@@ -1,20 +1,20 @@
 [package]
-name = "gemma4-chat"
-version = "0.1.0"
-description = "AI Chat — Local AI Chat App"
+name = "chatting-ai"
+version = "1.0.1"
+description = "chattingAI — Local AI Chat App"
 authors = []
 license = ""
 repository = ""
-default-run = "gemma4-chat"
+default-run = "chatting-ai"
 edition = "2021"
 rust-version = "1.77.2"
 
 [lib]
-name = "gemma4_chat_lib"
+name = "chatting_ai_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [[bin]]
-name = "gemma4-chat"
+name = "chatting-ai"
 path = "src/main.rs"
 
 [build-dependencies]

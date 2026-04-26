@@ -111,7 +111,7 @@ impl OllamaClient {
             messages,
             stream: true,
             options: Some(OllamaOptions { num_ctx: 8192 }),
-            think: Some(thinking),
+            think: if thinking { Some(true) } else { None },
         };
 
         let resp = self.client.post(&url).json(&req).send().await?;
@@ -124,5 +124,20 @@ impl OllamaClient {
         });
 
         Ok(Box::pin(stream))
+    }
+}
+
+#[derive(Debug, Deserialize)]
+pub struct OllamaShowResponse {
+    pub capabilities: Option<Vec<String>>,
+}
+
+impl OllamaClient {
+    pub async fn show_model(&self, model: &str) -> Result<Vec<String>> {
+        let url = format!("{}/api/show", self.base_url);
+        let req = serde_json::json!({ "model": model });
+        let resp = self.client.post(&url).json(&req).send().await?;
+        let data: OllamaShowResponse = resp.json().await?;
+        Ok(data.capabilities.unwrap_or_default())
     }
 }

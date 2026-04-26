@@ -17,7 +17,7 @@ pub struct Message {
     pub content: String,
 }
 
-/// Model capability flags — resolved from model name at load time
+/// Model capability flags — resolved from Ollama API at load time
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ModelCaps {
     pub think: bool,
@@ -27,42 +27,6 @@ impl ModelCaps {
     pub fn none() -> Self {
         Self { think: false }
     }
-}
-
-/// Resolve capabilities from model name (prefix/substring matching)
-pub fn resolve_caps(model: &str) -> ModelCaps {
-    let m = model.to_lowercase();
-
-    // gemma4 (all variants including e2b, e4b, latest, 27b ...)
-    if m.contains("gemma4") || m.contains("gemma3n") {
-        return ModelCaps { think: true };
-    }
-    // gemma3
-    if m.contains("gemma3") {
-        return ModelCaps { think: true };
-    }
-    // qwen3 / qwen3.5
-    if m.contains("qwen3") {
-        return ModelCaps { think: true };
-    }
-    // deepseek-r1
-    if m.contains("deepseek-r1") {
-        return ModelCaps { think: true };
-    }
-    // phi4-reasoning (must come before plain phi4)
-    if m.contains("phi4-reasoning") {
-        return ModelCaps { think: true };
-    }
-    if m.contains("phi4") {
-        return ModelCaps { think: true };
-    }
-    // abliterated / custom gemma4 forks
-    if m.contains("huihui") || m.contains("abliterated") || m.contains("fredrezones") {
-        return ModelCaps { think: true };
-    }
-
-    // everything else: no think
-    ModelCaps::none()
 }
 
 #[derive(Debug)]

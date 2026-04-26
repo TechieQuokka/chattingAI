@@ -45,7 +45,7 @@ export const useChatStore = defineStore('chat', () => {
 
     const abort = api.chatStream(
       text,
-      modelStore.thinkingEnabled,
+      modelStore.thinkingEnabled && modelStore.supportsThinking,
       (chunk) => {
         messages.value[idx].thinking += chunk
       },

@@ -33,7 +33,7 @@ pub async fn chat(
             ));
         }
         let model = inner.active_model.clone().unwrap();
-        let thinking = req.thinking.unwrap_or(inner.thinking_enabled);
+        let thinking = req.thinking.unwrap_or(inner.thinking_enabled) && inner.model_caps.think;
         (model, thinking)
     };
 

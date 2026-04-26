@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 
 use crate::ollama::OllamaClient;
-use crate::state::{resolve_caps, AppState, ModelStatus};
+use crate::state::{AppState, ModelStatus};
 
 #[derive(Deserialize)]
 pub struct ModelRequest {
@@ -53,7 +53,7 @@ pub async fn load_model(
         if inner.active_model.as_deref() == Some(&req.model)
             && inner.model_status == ModelStatus::Active
         {
-            return Ok(Json(json!({ "success": true, "message": "Model already active" })));
+            return Ok(Json(json!({ "success": true, "message": "Model already active", "supports_thinking": inner.model_caps.think })));
         }
     }
 
@@ -79,8 +79,12 @@ pub async fn load_model(
         }
     }
 
-    // Resolve caps from model name
-    let caps = resolve_caps(&req.model);
+    // Resolve caps from Ollama API
+    let client_for_caps = OllamaClient::new(state.ollama_base_url.clone());
+    let capabilities = client_for_caps.show_model(&req.model).await.unwrap_or_default();
+    let caps = crate::state::ModelCaps {
+        think: capabilities.contains(&"thinking".to_string()),
+    };
 
     // Set loading state
     {

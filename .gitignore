@@ -19,3 +19,4 @@ Thumbs.db
 *.log
 squashfs-root/
 windows-build/
+src-tauri/binaries/

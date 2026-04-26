@@ -1,0 +1,73 @@
+/* ============================================
+   DARK THEME — Deep Blue/Purple Premium
+   ============================================ */
+
+[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-base:        #0a0b14;
+  --bg-surface:     #0f1120;
+  --bg-elevated:    #151828;
+  --bg-overlay:     #1c2035;
+  --bg-hover:       #1e2438;
+  --bg-active:      #242840;
+
+  /* Brand — Deep Blue/Purple */
+  --accent-primary:   #7c6af7;
+  --accent-secondary: #5b8af0;
+  --accent-glow:      rgba(124, 106, 247, 0.25);
+  --accent-subtle:    rgba(124, 106, 247, 0.12);
+  --accent-border:    rgba(124, 106, 247, 0.35);
+
+  /* Text */
+  --text-primary:   #e8eaf6;
+  --text-secondary: #8892b0;
+  --text-muted:     #4a5270;
+  --text-accent:    #7c6af7;
+
+  /* Borders */
+  --border-subtle:  rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.10);
+  --border-strong:  rgba(255, 255, 255, 0.18);
+
+  /* Status */
+  --status-active:  #4ade80;
+  --status-loading: #fbbf24;
+  --status-error:   #f87171;
+  --status-inactive: #4a5270;
+
+  /* Code block */
+  --code-bg:        #0d0f1e;
+  --code-border:    rgba(124, 106, 247, 0.2);
+  --code-header-bg: #111325;
+
+  /* Scrollbar */
+  --scrollbar-thumb: rgba(124, 106, 247, 0.3);
+  --scrollbar-track: transparent;
+
+  /* Shadow */
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg:  0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 24px rgba(124, 106, 247, 0.2);
+
+  /* Glass effect */
+  --glass-bg: rgba(15, 17, 32, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  /* User message bubble */
+  --msg-user-bg: linear-gradient(135deg, #6c5af0, #4a7ae0);
+  --msg-user-text: #ffffff;
+  --msg-ai-bg: var(--bg-elevated);
+  --msg-ai-text: var(--text-primary);
+
+  /* Thinking block */
+  --thinking-bg:     rgba(91, 138, 240, 0.08);
+  --thinking-border: rgba(91, 138, 240, 0.25);
+  --thinking-text:   #7b93c4;
+  --thinking-icon:   #5b8af0;
+
+  /* Input area */
+  --input-bg:      #111325;
+  --input-border:  rgba(124, 106, 247, 0.25);
+  --input-focus:   rgba(124, 106, 247, 0.5);
+}

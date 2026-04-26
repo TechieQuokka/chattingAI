@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "src-tauri",
+    "chat-server",
+]
+resolver = "2"
